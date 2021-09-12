@@ -31,9 +31,11 @@ operatorButtons.forEach(button => {
 });
 
 function appendNumber(number){
-    // ensure only one decimal point
     if (number=='.' && displayNumbers.textContent.includes('.')){
         displayNumbers.textContent = displayNumbers.textContent;
+    }
+    else if (number=='.' && displayNumbers.textContent == '0'){
+        displayNumbers.textContent = '0.';
     }
     else if (displayNumbers.textContent == '0'){
         displayNumbers.textContent = number;
@@ -75,6 +77,10 @@ function changeSign(){
     if (displayNumbers.textContent == 0){
         displayNumbers.textContent = '-0';
     }
+    else if (isExponential){
+        expValue*=(-1);
+        displayNumbers.textContent = expValue.toExponential(2);
+    }
     else{
     displayNumbers.textContent = Number(displayNumbers.textContent)*(-1);
     }
@@ -92,6 +98,18 @@ function deleteNumber(){
     if ((num.length == 1) || (num.length==2 && num.includes('-'))){
         clear();
     }
+    else if (isExponential){
+        let checkExp = expValue.toString().slice(0, -1);
+        if (checkExp.length <= 10){
+            displayNumbers.textContent = checkExp;
+            isExponential = false;
+            expValue = 0;
+        }
+        else{
+            expValue = Number(checkExp);
+            displayNumbers.textContent = Number(checkExp).toExponential(2);
+        }
+    }
     else{
         displayNumbers.textContent = num.slice(0, -1);
     }
@@ -107,6 +125,8 @@ function equals(){
         displayMath.textContent+= ` ${secondOperand} =`;
         ans = Math.round ((operate(firstOperand, secondOperand, currentOperator)) * 1000) / 1000;
         if (ans.toString().length >= 10){
+            isExponential = true;
+            expValue = ans;
             displayNumbers.textContent = ans.toExponential(2);
             currentOperator = null;
         }
@@ -155,7 +175,10 @@ document.addEventListener('keydown', (e) => {
     else if (e.key=='Enter' || e.key=='='){
         equals();
     }
-    else if (e.key=='+' || e.key=='-'){
+    else if (e.key=='+'){
+        setOperator(e.key);
+    }
+    else if (e.key=='-'){
         setOperator(e.key);
     }
     else if (e.key=='*'){
