@@ -123,10 +123,10 @@ function equals(){
     if (currentOperator!=null){
         secondOperand = displayNumbers.textContent;
         displayMath.textContent+= ` ${secondOperand} =`;
-        ans = Math.round ((operate(firstOperand, secondOperand, currentOperator)) * 1000) / 1000;
+        let ans = Math.round ((operate(Number(firstOperand), Number(secondOperand), currentOperator)) * 1000) / 1000;
         if (ans.toString().length >= 10){
+            expValue = Number(ans);
             isExponential = true;
-            expValue = ans;
             displayNumbers.textContent = ans.toExponential(2);
             currentOperator = null;
         }
