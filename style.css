@@ -1,0 +1,58 @@
+body{
+  font-family: 'Roboto', sans-serif;
+  background-color:rgb(199, 224, 224);
+}
+button{
+  font-size: 32px;
+  border: 1px solid black;
+  border-radius: 5px;
+  font-family: 'Roboto', sans-serif;
+}
+.calculator{
+  width: 300px;
+  margin: auto;
+  margin-top: 50px;
+  background-color: gray;
+  border: 12px solid gray;
+  border-radius: 5px;
+  box-shadow: 0px 0px 0px 1px black;
+}
+.screen{
+  height: 90px;
+  padding: 10px 20px;
+  text-align: right;
+  background-color: rgb(239, 239, 239);
+  border: 1px solid black;
+  border-radius: 5px;
+  
+}
+#math{
+  font-size: 24px;
+  height: 28px;
+}
+#answer{
+  font-size: 38px;
+  padding-top: 16px;
+}
+.buttons{
+  height: 380px;
+  width: 300px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 5px;
+  padding-top: 12px;
+  font-size: 12px;
+  background-color: gray;
+}
+.operators{
+  background-color:rgb(199, 199, 199)
+}
+.numbers:hover{
+  background-color:rgb(219, 219, 219);
+}
+.operators:hover{
+  background-color:rgb(172, 171, 171)
+}
+#equals{
+  grid-column: span 2;
+}
