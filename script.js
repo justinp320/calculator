@@ -187,6 +187,12 @@ document.addEventListener('keydown', (e) => {
     if (e.key=='Backspace'){
         deleteNumber();
     }
+    else if (e.key=='c'){
+        clear();
+    }
+    else if (e.key=='s'){
+        changeSign();
+    }
     else if (e.key=='Enter' || e.key=='='){
         equals();
     }
