@@ -74,7 +74,10 @@ function setOperator(operator){
 }
 
 function changeSign(){
-    if (displayNumbers.textContent == 0){
+    if (displayNumbers.textContent == '-0'){
+        displayNumbers.textContent = 0;
+    }
+    else if (displayNumbers.textContent == 0){
         displayNumbers.textContent = '-0';
     }
     else if (isExponential){
