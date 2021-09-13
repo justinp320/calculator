@@ -92,13 +92,19 @@ function changeSign(){
 function clear(){
     displayNumbers.textContent = '0';
     displayMath.textContent = '';
+    firstOperand = '';
+    secondOperand = '';
+    currentOperator = null;
     isExponential = false;
     expValue = 0;
 }
 
 function deleteNumber(){
     let num = displayNumbers.textContent.toString();
-    if ((num.length == 1) || (num.length==2 && num.includes('-'))){
+    if ( currentOperator!= null && num.length <= 1){
+        displayNumbers.textContent = '';
+    }
+    else if ((num.length == 1) || (num.length==2 && num.includes('-'))){
         clear();
     }
     else if (isExponential){
