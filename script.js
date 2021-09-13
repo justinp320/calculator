@@ -61,8 +61,9 @@ function setOperator(operator){
     isExponential = false;
     expValue = 0;
     if (currentOperator!=null && displayMath.textContent!=''){
-        firstOperand = operate(Number(firstOperand), Number(displayNumbers.textContent), operator);
+        firstOperand = operate(Number(firstOperand), Number(displayNumbers.textContent), currentOperator);
         displayNumbers.textContent = '';
+        currentOperator = operator;
     }
     if (currentOperator != null){
         currentOperator = operator;
