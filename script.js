@@ -60,6 +60,10 @@ function appendNumber(number){
 function setOperator(operator){
     isExponential = false;
     expValue = 0;
+    if (currentOperator!=null && displayMath.textContent!=''){
+        firstOperand = operate(Number(firstOperand), Number(displayNumbers.textContent), operator);
+        displayNumbers.textContent = '';
+    }
     if (currentOperator != null){
         currentOperator = operator;
         displayMath.textContent = `${firstOperand} ${currentOperator} `;
@@ -129,7 +133,7 @@ function equals(){
         alert("You cannot divide by zero");
         return;
     }
-    if (currentOperator!=null){
+    if (currentOperator!=null && displayNumbers.textContent != ''){
         secondOperand = displayNumbers.textContent;
         displayMath.textContent+= ` ${secondOperand} =`;
         let ans = Math.round ((operate(Number(firstOperand), Number(secondOperand), currentOperator)) * 1000) / 1000;
