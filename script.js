@@ -60,12 +60,13 @@ function appendNumber(number){
 function setOperator(operator){
     isExponential = false;
     expValue = 0;
-    if (currentOperator!=null && displayMath.textContent!=''){
+    if (currentOperator!=null && displayMath.textContent!='' && displayNumbers.textContent!=''){
         firstOperand = operate(Number(firstOperand), Number(displayNumbers.textContent), currentOperator);
-        displayNumbers.textContent = '';
         currentOperator = operator;
+        displayMath.textContent = `${firstOperand} ${currentOperator} `;
+        displayNumbers.textContent = '';
     }
-    if (currentOperator != null){
+    else if (currentOperator != null){
         currentOperator = operator;
         displayMath.textContent = `${firstOperand} ${currentOperator} `;
     }
