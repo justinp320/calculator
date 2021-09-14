@@ -61,10 +61,15 @@ function setOperator(operator){
     isExponential = false;
     expValue = 0;
     if (currentOperator!=null && displayMath.textContent!='' && displayNumbers.textContent!=''){
+        if ((firstOperand==0 || Number(displayNumbers.textContent)==0) && operator=='÷'){
+            alert("You cannot divide by zero");
+        }
+        else{
         firstOperand = operate(Number(firstOperand), Number(displayNumbers.textContent), currentOperator);
         currentOperator = operator;
         displayMath.textContent = `${firstOperand} ${currentOperator} `;
         displayNumbers.textContent = '';
+        }
     }
     else if (currentOperator != null){
         currentOperator = operator;
