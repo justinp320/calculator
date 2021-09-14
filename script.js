@@ -65,7 +65,7 @@ function setOperator(operator){
             alert("You cannot divide by zero");
         }
         else{
-        firstOperand = operate(Number(firstOperand), Number(displayNumbers.textContent), currentOperator);
+        firstOperand = Math.round ((operate(Number(firstOperand), Number(displayNumbers.textContent), currentOperator)) * 1000) / 1000;
         currentOperator = operator;
         displayMath.textContent = `${firstOperand} ${currentOperator} `;
         displayNumbers.textContent = '';
@@ -76,7 +76,6 @@ function setOperator(operator){
         displayMath.textContent = `${firstOperand} ${currentOperator} `;
     }
     else{
-
     firstOperand = displayNumbers.textContent;
     displayNumbers.textContent = '';
     currentOperator = operator;
